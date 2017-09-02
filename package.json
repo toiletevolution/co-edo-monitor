@@ -1,0 +1,23 @@
+{
+  "name": "co-edo-monitor",
+  "version": "1.0.0",
+  "description": "Toilet Evolution Co-Edo Monitor App",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "scripts": {
+    "start": "polymer serve",
+    "postinstall": "bower install"
+  },
+  "author": {
+    "name": "Kenichiro Kishida",
+    "email": "sizuhiko@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "polymer-cli": "^1.1.0"
+  },
+  "devDependencies": {}
+}

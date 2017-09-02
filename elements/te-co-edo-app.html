@@ -1,0 +1,48 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="te-device-value-status.html">
+<link rel="import" href="te-theme.html">
+
+<dom-module id="te-co-edo-app">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+        height: 100%;
+        background-color: white;
+        padding: 1em 0;
+        --app-primary-color: var(--default-primary-color);
+        --app-secondary-color: var(--primary-text-color);
+      }
+      h2 {
+        margin: 1em 0 1em 2em;
+      }
+      p {
+        text-align: center;
+      }
+    </style>
+
+    <h1>Co-Edo 各階トイレ利用状況</h1>
+
+    <h2>5F トイレ</h2>
+    <iron-ajax url="https://toiletevolution.space/api/devices/5682617542246400" handle-as="json" method="GET" last-response="{{device5f}}" auto></iron-ajax>
+    <te-device-value-status device="[[device5f]]" selected></te-device-value-status>
+
+    <h2>4F 女子トイレ</h2>
+    <p>設置予定</p>
+
+    <h2>3F トイレ</h2>
+    <p>設置予定</p>
+
+  </template>
+
+  <script>
+
+    Polymer({
+      is: 'te-co-edo-app',
+    });
+
+  </script>
+
+</dom-module>

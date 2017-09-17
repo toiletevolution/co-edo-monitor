@@ -22,9 +22,18 @@
       .status-icon {
         --iron-icon-height: 100px;
         --iron-icon-width: 100px;
+        --iron-icon-fill-color: white;
+        border-radius: 1em;
+        margin-right: 2em;
       }
       .status-table {
         overflow: auto;
+      }
+      .status-icon.vacancy {
+        background-color: #3fca3e;
+      }
+      .status-icon.occupied {
+        background-color: #fc404a;
       }
       .vacancy-mark {
         --iron-icon-fill-color: #3fca3e;
@@ -48,7 +57,13 @@
     <template is="dom-repeat" items="[[deviceThresholds]]" as="threshold" index-as="roomIndex">
 
       <paper-icon-item>
-        <iron-icon class="status-icon" icon="{{statusIcon(deviceValues, roomIndex, threshold)}}" item-icon></iron-icon>
+        <template is="dom-if" if="{{isOpenFromValues(deviceValues, roomIndex, threshold)}}">
+          <iron-icon class="status-icon vacancy" icon="te-icon:vacancy" item-icon></iron-icon>
+        </template>
+        <template is="dom-if" if="{{!isOpenFromValues(deviceValues, roomIndex, threshold)}}">
+          <iron-icon class="status-icon occupied" icon="te-icon:occupied" item-icon></iron-icon>
+        </template>
+
         <paper-item-body class="status-table">
           <table>
             <thead><tr>
@@ -112,9 +127,9 @@
           }, 10000);
         }
       },
-      statusIcon: function(values, roomId, threshold) {
+      isOpenFromValues: function(values, roomId, threshold) {
         if(!values) {
-          return;
+          return false;
         }
         var opened = true;
         var isOpen = this.isOpen;
@@ -123,7 +138,7 @@
             opened = false;
           }
         });
-        return opened? 'te-icon:vacancy' : 'te-icon:occupied';
+        return opened;
       },
       isOpenByRoomId: function(threshold, payloadValue, roomId) {
         if(!payloadValue) {

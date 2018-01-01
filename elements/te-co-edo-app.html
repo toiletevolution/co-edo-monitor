@@ -30,10 +30,12 @@
     <te-device-value-status device="[[device5f]]" selected></te-device-value-status>
 
     <h2>4F 女子トイレ</h2>
-    <p>設置予定</p>
+    <iron-ajax url="https://toiletevolution.space/api/devices/5741031244955648" handle-as="json" method="GET" last-response="{{device4f}}" auto></iron-ajax>
+    <te-device-value-status device="[[device4f]]" selected></te-device-value-status>
 
-    <h2>3F トイレ</h2>
-    <p>設置予定</p>
+    <h2>3F 男子トイレ</h2>
+    <iron-ajax url="https://toiletevolution.space/api/devices/5687539843203072" handle-as="json" method="GET" last-response="{{device3f}}" auto></iron-ajax>
+    <te-device-value-status device="[[device3f]]" selected></te-device-value-status>
 
   </template>
 
